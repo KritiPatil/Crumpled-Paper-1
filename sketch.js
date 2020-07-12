@@ -26,11 +26,12 @@ function setup() {
 	
 
 	//Create a Ground
-	 
+	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
+	 World.add(world, ground);
 
-	 db1 = new Dustbin(670, 640, 150, 10);
-	 db2 = new Dustbin(620, 640, 10, 80);
-	 db3 = new Dustbin(720, 640, 10, 80);
+	 db1 = new Dustbin(670, 640, 200, 10);
+	 db2 = new Dustbin(570, 640, 10, 60);
+	 db3 = new Dustbin(750, 640, 10, 70);
 
 	 //paper = new Paper(100, 640, 50);
 
@@ -47,20 +48,19 @@ function draw() {
   db2.display();
   db3.display();
 
-  ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
-	ground.shapeColor = "yellow";
-	 World.add(world, ground);
-
   packageBody.display();
 
-  KeyPressed();
-  
+  keyPressed();
+
+  fill ("yellow");
+  rect(ground.position.x, ground.position.y, width, 10);
+
   drawSprites();
  
 }
 
-function KeyPressed() {
-	if(keyCode === UP_ARROW) {
-	  Matter.Body.applyForce(packageBody.body, packageBody.body.position, {x:10, y:-8});
+function keyPressed() {
+	if(keyCode 	=== UP_ARROW) {
+       Matter.Body.applyForce(packageBody.body, packageBody.body.position, {x:1, y:-11.6});
 	}
 }
